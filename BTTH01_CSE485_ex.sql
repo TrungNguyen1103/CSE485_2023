@@ -38,4 +38,16 @@ JOIN theloai tl ON b.ma_tloai = tl.ma_tloai
 SELECT * FROM vw_Music;
 
 j
+CREATE PROCEDURE sp_DSBaiViet(IN ten_tloai VARCHAR(50))
+BEGIN
+    DECLARE TheLoaiID INT;
+    SELECT ID INTO TheLoaiID FROM theloai WHERE Ten = ten_tloai;
+    IF TheLoaiID IS NULL THEN
+        SELECT 'Không tìm thấy thể loại' AS ThongBao;
+    ELSE
+        SELECT * FROM baiViet WHERE ma_tloai = TheLoaiID;
+    END IF;
+END;
+k
+ALTER TABLE theloai ADD SLBaiViet INT NOT NULL DEFAULT 0;
 
