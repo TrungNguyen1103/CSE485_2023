@@ -50,4 +50,8 @@ BEGIN
 END;
 k
 ALTER TABLE theloai ADD SLBaiViet INT NOT NULL DEFAULT 0;
+l
+CREATE TABLE Users (
+username varchar(50),
+password varchar(50)
 
