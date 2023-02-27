@@ -73,6 +73,8 @@ if (!$conn) {
 							<th>Chỉnh sửa</th>
                             <th>Ngày đăng</th>
                             <th>Hình ảnh</th>
+                            <th>Chỉnh sửa</th>
+                            <th>Xóa</th>
 						</tr>
 					</thead>
 					<!-- <?php
