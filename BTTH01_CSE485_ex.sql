@@ -52,8 +52,14 @@ k
 ALTER TABLE theloai ADD SLBaiViet INT NOT NULL DEFAULT 0;
 l
 CREATE TABLE Users (
-username varchar(50),
-password varchar(50),
-role boolean
- );
+  ma_user INT(11) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  passwd VARCHAR(2555) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  gioitinh bit,
+  ngaysinh date,
+  PRIMARY KEY (ma_user),
+  UNIQUE KEY (username),
+  UNIQUE KEY (email)
+);
 
