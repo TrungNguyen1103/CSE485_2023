@@ -1,3 +1,13 @@
+<?php
+$host = "localhost";  
+$dbname="btth01_CSE485"; 
+$username = "root";
+$password = "";
+$conn = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $username, $password);  // thực hiện kết nối đến database
+    $sql= "SELECT* FROM tacgia ";
+    $kq = $conn->query($sql);
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <<head>
@@ -56,29 +66,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Nguyễn Văn A</td>
-      <td td>
-      <td>
-        <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-      </td>
-      <td>
-        <a href=""><i class="fa-solid fa-trash"></i></a>
-      </td>                
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Trần Thị B</td>
-      <td td>
-      <td>
-                                <a href="edit_author.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>  
-    </tr>
-    <!-- Thêm các hàng tương tự cho các tác giả khác -->
+    <?php
+                    
+                            while ($row = $kq->fetch(PDO::FETCH_ASSOC)){?>
+                                <tr>
+                                
+                                <td><?php echo $row['ma_tgia']; ?></td>
+                                <td><?php echo $row['ten_tgia']; ?></td>
+                                <td><?php echo $row['hinh_tgia']; ?></td>
+                                <td>
+                                    <a href="edit_author.php?id="><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
+                                <td>
+                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <?php }
+                         ?>
   </tbody>
 </table>
             </div>
