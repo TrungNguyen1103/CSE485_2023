@@ -1,3 +1,13 @@
+<?php
+$host = "localhost";  
+$dbname="btth01_CSE485"; 
+$username = "root";
+$password = "";
+$conn = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $username, $password);  // thực hiện kết nối đến database
+    $sql= "SELECT* FROM tacgia ";
+    $kq = $conn->query($sql);
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
