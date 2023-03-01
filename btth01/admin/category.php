@@ -1,3 +1,13 @@
+<?php
+
+$host = "localhost";  
+$dbname="btth01_CSE485"; 
+$username = "root";
+$password = "";
+$conn = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $username, $password);  // thực hiện kết nối đến database
+    $sql= "SELECT* FROM theloai ";
+    $kq = $conn->query($sql);
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,35 +59,27 @@
                 <a href="add_category.php" class="btn btn-success">Thêm mới</a>
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên thể loại</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nhạc trữ tình</td>
-                            <td>
-                                <a href="edit_category.php?id=1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nhạc cách mạng</td>
-                            <td>
-                                <a href="edit_category.php?id=2"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </td>
-                            <td>
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                       
+                        <tbody>
+                       <?php
+        $i = 1;
+        while ($row = $kq->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+            <tr>
+                <th scope="row"><?php echo $i++; ?></th>
+                <td><?php echo $row['ten_tloai']; ?></td>
+                <td>
+                    <a href="edit_category.php?id=<?php echo $row['ma_tloai']; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                </td>
+                <td>
+                <td>
+    <a href="process_delete_category.php?id=<?php echo $row['ma_tloai']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?');"><i class="fa-solid fa-trash"></i></a> <!-- Thêm nút Xóa -->
+</td>
+
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
                     </tbody>
                 </table>
             </div>
